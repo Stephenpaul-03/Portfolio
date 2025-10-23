@@ -42,7 +42,7 @@ export default function Hero() {
         <Button variant="ghost" size="icon" className="">
           <Linkedin className="h-5 w-5" />
         </Button>
-        <ModeToggle/>
+        <ModeToggle />
       </div>
 
       {/* GREEN BAR (desktop vertical) */}
@@ -68,6 +68,7 @@ export default function Hero() {
           <Button variant="ghost" size="icon" className="text-white">
             <Linkedin className="h-5 w-5" />
           </Button>
+          <ModeToggle />
         </div>
 
         {/* Name and Description */}
