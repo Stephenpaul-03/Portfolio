@@ -14,7 +14,7 @@ export function ModeToggle() {
       variant="ghost"
       size="icon"
       onClick={toggleTheme}
-      className="relative"
+      className="relative rounded-full md:hover:text-blue-500 md:hover:dark:text-yellow-500"
     >
       <Sun className="h-[1.2rem] w-[1.2rem] dark:hidden transition-all" />
       <Moon className="h-[1.2rem] w-[1.2rem] hidden dark:block transition-all" />

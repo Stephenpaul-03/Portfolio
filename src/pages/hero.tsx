@@ -1,20 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Mail, Github, Linkedin } from "lucide-react";
 import portrait from "@/assets/img.png";
-import { ModeToggle } from "@/components/theme/mode-toggle";
+import { AnimatedThemeToggler } from "@/components/theme/animated-theme-toggler";
 
 export default function Hero() {
   return (
     <div className="relative flex flex-col md:flex-row h-screen w-full">
       {/* TOP NAV (for desktop) */}
       <div className="hidden md:flex flex-col p-10 w-[90%] z-10">
-        {/* Navigation */}
-        <div className="flex gap-6">
-          <Button variant="ghost">Home</Button>
-          <Button variant="ghost">Projects</Button>
-          <Button variant="ghost">Contact</Button>
-        </div>
-
         {/* Hero Text */}
         <div className="flex flex-col gap-6 items-baseline justify-center flex-1">
           <h1 className="text-6xl font-bold">Stephen Paul</h1>
@@ -33,16 +26,16 @@ export default function Hero() {
 
       {/* RIGHT ICONS - DESKTOP */}
       <div className="hidden md:flex flex-col items-center justify-start pt-10 gap-4 w-[10%] z-100">
-        <Button variant="ghost" size="icon" className="">
+        <Button variant="ghost" size="icon" className="rounded-full hover:text-red-500">
           <Mail className="h-5 w-5" />
         </Button>
-        <Button variant="ghost" size="icon" className="">
+        <Button variant="ghost" size="icon" className="rounded-full hover:text-gray-400 hover:dark:text-gray-700">
           <Github className="h-5 w-5" />
         </Button>
-        <Button variant="ghost" size="icon" className="">
+        <Button variant="ghost" size="icon" className="rounded-full hover:text-blue-500">
           <Linkedin className="h-5 w-5" />
         </Button>
-        <ModeToggle />
+       <AnimatedThemeToggler/>
       </div>
 
       {/* GREEN BAR (desktop vertical) */}
@@ -59,16 +52,16 @@ export default function Hero() {
       <div className="flex md:hidden flex-col items-center justify-start relative w-full h-full p-6">
         {/* Top Right Icons */}
         <div className="absolute top-4 right-4 flex gap-3">
-          <Button variant="ghost" size="icon" className="text-white">
+          <Button variant="ghost" size="icon" className="rounded-full text-red-500">
             <Mail className="h-5 w-5" />
           </Button>
-          <Button variant="ghost" size="icon" className="text-white">
+          <Button variant="ghost" size="icon" className="rounded-full text-gray-400">
             <Github className="h-5 w-5" />
           </Button>
-          <Button variant="ghost" size="icon" className="text-white">
+          <Button variant="ghost" size="icon" className="text-blue-500">
             <Linkedin className="h-5 w-5" />
           </Button>
-          <ModeToggle />
+          <AnimatedThemeToggler/>
         </div>
 
         {/* Name and Description */}

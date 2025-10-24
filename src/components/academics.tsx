@@ -7,57 +7,41 @@ import {
   TimelineItem,
   TimelineSeparator,
   TimelineTitle,
-} from "@/components/ui/timeline"
-
-const items = [
-  {
-    id: 1,
-    date: "Mar 15, 2024",
-    title: "Project Kickoff",
-    description:
-      "Initial team meeting and project scope definition. Established key milestones and resource allocation.",
-  },
-  {
-    id: 2,
-    date: "Mar 22, 2024",
-    title: "Design Phase",
-    description:
-      "Completed wireframes and user interface mockups. Stakeholder review and feedback incorporated.",
-  },
-  {
-    id: 3,
-    date: "Apr 5, 2024",
-    title: "Development Sprint",
-    description:
-      "Backend API implementation and frontend component development in progress.",
-  },
-  {
-    id: 4,
-    date: "Apr 19, 2024",
-    title: "Testing & Deployment",
-    description:
-      "Quality assurance testing, performance optimization, and production deployment preparation.",
-  },
-]
+} from "@/components/ui/timeline";
+import { academics } from "@/data";
 
 export default function Academics() {
   return (
-    <section className="flex h-full md:min-h-screen w-full flex-col items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 text-white p-4 overflow-auto">
-      <div className="w-full max-w-2xl">
-        <Timeline defaultValue={3}>
-          {items.map((item) => (
-            <TimelineItem key={item.id} step={item.id}>
-              <TimelineHeader>
-                <TimelineSeparator />
-                <TimelineDate>{item.date}</TimelineDate>
-                <TimelineTitle>{item.title}</TimelineTitle>
-                <TimelineIndicator />
-              </TimelineHeader>
-              <TimelineContent>{item.description}</TimelineContent>
-            </TimelineItem>
-          ))}
-        </Timeline>
+    <main className="flex h-[85vh] overflow-auto md:min-h-screen w-full flex-col items-center justify-start p-5">
+      {/* Description Section */}
+      <div className="text-center space-y-4 mb-5 max-w-xl">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus,
+          error, aperiam dignissimos ipsam, ipsa blanditiis asperiores doloribus
+        </p>
       </div>
-    </section>
-  )
+
+      {/* Timeline Section */}
+      <div className="flex-1 w-full max-w-xl">
+        <div className="w-full max-w-2xl">
+          <Timeline defaultValue={3}>
+            {academics.map((item) => (
+              <TimelineItem key={item.id} step={item.id}>
+                <TimelineHeader>
+                  <TimelineSeparator />
+                  <TimelineDate>{item.date}</TimelineDate>
+                  <TimelineTitle>{item.title}</TimelineTitle>
+                  <TimelineDate>{item.score}</TimelineDate>
+                  <TimelineIndicator />
+                </TimelineHeader>
+                <TimelineContent>
+                  {item.description}
+                </TimelineContent>
+              </TimelineItem>
+            ))}
+          </Timeline>
+        </div>
+      </div>
+    </main>
+  );
 }

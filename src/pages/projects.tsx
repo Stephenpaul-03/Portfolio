@@ -12,77 +12,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-
-const projects = [
-  {
-    title: "Project Alpha",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    images: [
-      "https://placehold.co/800x600?text=Project+Alpha+1",
-      "https://placehold.co/800x600?text=Project+Alpha+2",
-      "https://placehold.co/800x600?text=Project+Alpha+3",
-    ],
-    ctaText: "Learn More",
-    ctaLink: "#",
-    tech: ["React", "TypeScript", "UI/UX"],
-    content: () => (
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
-      </p>
-    ),
-  },
-  {
-    title: "Project Beta",
-    description: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    images: [
-      "https://placehold.co/800x600?text=Project+Beta+1",
-      "https://placehold.co/800x600?text=Project+Beta+2",
-      "https://placehold.co/800x600?text=Project+Beta+3",
-    ],
-    ctaText: "View Details",
-    ctaLink: "#",
-    tech: ["Node.js", "Express", "API"],
-    content: () => (
-      <p>
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-      </p>
-    ),
-  },
-  {
-    title: "Project Gamma",
-    description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    images: [
-      "https://placehold.co/800x600?text=Project+Gamma+1",
-      "https://placehold.co/800x600?text=Project+Gamma+2",
-      "https://placehold.co/800x600?text=Project+Gamma+3",
-    ],
-    ctaText: "Explore",
-    ctaLink: "#",
-    tech: ["Python", "Django", "Backend"],
-    content: () => (
-      <p>
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
-    ),
-  },
-  {
-    title: "Project Delta",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
-    images: [
-      "https://placehold.co/800x600?text=Project+Delta+1",
-      "https://placehold.co/800x600?text=Project+Delta+2",
-      "https://placehold.co/800x600?text=Project+Delta+3",
-    ],
-    ctaText: "Check it Out",
-    ctaLink: "#",
-    tech: ["UI Design", "Figma", "Prototyping"],
-    content: () => (
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      </p>
-    ),
-  },
-];
+import {projects} from "@/data"
 
 export const Projects: React.FC = () => {
   const [active, setActive] = useState<(typeof projects)[number] | null>(null);
@@ -100,7 +30,7 @@ export const Projects: React.FC = () => {
   useOutsideClick(ref as React.RefObject<HTMLDivElement>, () => setActive(null));
 
   return (
-    <div className="min-h-[100vh] w-full flex flex-col items-center pt-16 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 text-white overflow-y-auto">
+    <div className="min-h-[100vh] w-full flex flex-col items-center pt-16 overflow-y-auto">
       <h1 className="text-4xl font-bold mb-5 text-center">Projects Showcase</h1>
       <p className="px-10 md:px-20 mb-10 text-md text-gray-300 text-center">
         A gallery of dummy projects for UI testing and design layout purposes.
