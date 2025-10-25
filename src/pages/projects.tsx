@@ -12,7 +12,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-import {projects} from "@/data"
+import { projects } from "@/data";
 
 export const Projects: React.FC = () => {
   const [active, setActive] = useState<(typeof projects)[number] | null>(null);
@@ -21,8 +21,7 @@ export const Projects: React.FC = () => {
 
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => e.key === "Escape" && setActive(null);
-    if (active) document.body.style.overflow = "hidden";
-    else document.body.style.overflow = "auto";
+    document.body.style.overflow = active ? "hidden" : "auto";
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [active]);
@@ -30,9 +29,9 @@ export const Projects: React.FC = () => {
   useOutsideClick(ref as React.RefObject<HTMLDivElement>, () => setActive(null));
 
   return (
-    <div className="min-h-[100vh] w-full flex flex-col items-center pt-16 overflow-y-auto">
-      <h1 className="text-4xl font-bold mb-5 text-center">Projects Showcase</h1>
-      <p className="px-10 md:px-20 mb-10 text-md text-gray-300 text-center">
+    <div className="min-h-screen w-full flex flex-col items-center pt-16 overflow-y-auto">
+      <h1 className="text-4xl font-bold mb-5 text-center rock-salt-regular leading-relaxed text-primary">Projects Showcase</h1>
+      <p className="px-10 md:px-20 mb-10 text-sm md:text-md text-center text-muted-foreground">
         A gallery of dummy projects for UI testing and design layout purposes.
       </p>
 
@@ -43,7 +42,7 @@ export const Projects: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/40 z-10"
+            className="fixed inset-0 bg-background/60 backdrop-blur-sm z-10"
           />
         )}
       </AnimatePresence>
@@ -58,11 +57,11 @@ export const Projects: React.FC = () => {
               exit={{ opacity: 0, scale: 0.9, y: 40 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
               ref={ref}
-              className="w-[95vw] max-w-[1100px] h-[85vh] bg-white dark:bg-neutral-900 rounded-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row relative"
+              className="w-[95vw] max-w-[1100px] h-[85vh] bg-background rounded-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row relative"
             >
               <button
                 onClick={() => setActive(null)}
-                className="absolute top-4 right-4 z-50 bg-black/30 hover:bg-black/50 text-white rounded-full p-2 transition"
+                className="absolute top-4 right-4 z-50 bg-foreground/20 hover:bg-foreground/30 text-foreground rounded-full p-2 transition"
               >
                 <X size={20} />
               </button>
@@ -70,23 +69,19 @@ export const Projects: React.FC = () => {
               {/* Info */}
               <div className="p-6 md:w-1/2 flex flex-col justify-between overflow-y-auto md:h-full h-[55%]">
                 <div>
-                  <h3 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-2">
-                    {active.title}
-                  </h3>
-                  <p className="text-neutral-600 dark:text-neutral-400 mb-4">
-                    {active.description}
-                  </p>
+                  <h3 className="text-2xl font-bold mb-2">{active.title}</h3>
+                  <p className="text-muted-foreground mb-4">{active.description}</p>
                   <div className="flex flex-wrap gap-2 mb-4">
                     {active.tech.map((stack) => (
                       <span
                         key={stack}
-                        className="bg-green-500/20 text-green-400 text-xs px-3 py-1 rounded-full"
+                        className="bg-primary/20 text-primary text-xs px-3 py-1 rounded-full"
                       >
                         {stack}
                       </span>
                     ))}
                   </div>
-                  <div className="text-neutral-700 dark:text-neutral-300 text-sm mb-6">
+                  <div className="text-sm mb-6 text-muted-foreground">
                     {typeof active.content === "function"
                       ? active.content()
                       : active.content}
@@ -96,7 +91,7 @@ export const Projects: React.FC = () => {
                   <a
                     href={active.ctaLink}
                     target="_blank"
-                    className="inline-block px-5 py-2 rounded-full bg-green-500 text-white font-semibold hover:bg-green-600 transition"
+                    className="inline-block px-5 py-2 rounded-full bg-primary text-primary-foreground font-semibold hover:bg-primary/80 transition"
                   >
                     {active.ctaText}
                   </a>
@@ -104,7 +99,7 @@ export const Projects: React.FC = () => {
               </div>
 
               {/* Carousel */}
-              <div className="md:w-1/2 bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center md:h-full h-[45%] relative">
+              <div className="md:w-1/2 bg-muted flex items-center justify-center md:h-full h-[45%] relative">
                 <Carousel
                   opts={{ loop: true }}
                   plugins={[Autoplay({ delay: 3000 })]}
@@ -121,8 +116,8 @@ export const Projects: React.FC = () => {
                       </CarouselItem>
                     ))}
                   </CarouselContent>
-                  <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/40 text-white hover:bg-black/60" />
-                  <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/40 text-white hover:bg-black/60" />
+                  <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 bg-foreground/20 text-foreground hover:bg-foreground/40" />
+                  <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 bg-foreground/20 text-foreground hover:bg-foreground/40" />
                 </Carousel>
               </div>
             </motion.div>
@@ -143,9 +138,13 @@ export const Projects: React.FC = () => {
               alt={project.title}
               className="absolute inset-0 w-full h-full object-cover"
             />
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent p-4 backdrop-blur-sm">
-              <h3 className="text-lg font-semibold text-white">{project.title}</h3>
-              <p className="text-sm text-gray-300">{project.description}</p>
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background/80 via-background/40 to-transparent p-4 backdrop-blur-sm">
+              <h3 className="text-sm md:text-lg font-semibold text-foreground">
+                {project.title}
+              </h3>
+              <p className="text-xs md:text-sm text-muted-foreground">
+                {project.description}
+              </p>
             </div>
           </motion.div>
         ))}

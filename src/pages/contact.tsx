@@ -21,7 +21,7 @@ export default function Contact() {
         <p className="text-muted-foreground tracking-wide uppercase text-sm">
           Crafting code with a dash of chaos
         </p>
-        <h1 className="text-5xl font-bold tracking-tight">Stephen Paul</h1>
+        <h1 className="text-5xl font-bold tracking-tight rock-salt-regular my-10">Stephen Paul</h1>
         <p className="text-muted-foreground text-base">
           Let’s connect and build something cool together.
         </p>

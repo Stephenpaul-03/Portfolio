@@ -22,10 +22,10 @@ const renderTree = (node: any) => {
 
 export default function Skills() {
   return (
-    <section className="flex flex-col h-auto min-h-[80vh] md:min-h-screen w-full items-center justify-start overflow-auto p-4">
-      <div className="max-w-6xl w-full flex flex-col items-center gap-12">
+    <section className="flex flex-col h-[115vh] min-h-[80vh] md:min-h-screen w-full items-center justify-start p-5">
+      <div className="max-w-6xl w-full h-[130vh] md:h-[75vh] flex flex-col items-center gap-12">
         {/* Description */}
-        <p className="text-center max-w-2xl text-neutral-400 text-sm md:text-base">
+        <p className="text-center max-w-2xl text-sm">
           Here's a showcase of the technologies, tools, and skills I work with
           daily - from frontend and backend development to the tools that keep
           everything flowing smoothly.

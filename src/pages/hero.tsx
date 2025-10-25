@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import { Mail, Github, Linkedin } from "lucide-react";
 import portrait from "@/assets/img.png";
 import { AnimatedThemeToggler } from "@/components/theme/animated-theme-toggler";
+import { Highlighter } from "@/components/ui/highlighter";
+import { TextAnimate } from "@/components/ui/text-animate";
 
 export default function Hero() {
   return (
@@ -10,13 +12,14 @@ export default function Hero() {
       <div className="hidden md:flex flex-col p-10 w-[90%] z-10">
         {/* Hero Text */}
         <div className="flex flex-col gap-6 items-baseline justify-center flex-1">
-          <h1 className="text-6xl font-bold">Stephen Paul</h1>
-          <p className="text-lg max-w-2xl text-left">
+          <h1 className="text-4xl font-bold rock-salt-regular">I am</h1>
+          <h1 className="text-6xl font-bold rock-salt-regular"><Highlighter action="highlight" color="#92bc7c">Stephen Paul</Highlighter></h1>
+          <TextAnimate className="text-lg max-w-2xl text-left" animation="blurIn" by="word" once>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
             sit amet justo nec sapien tincidunt aliquet. Curabitur fringilla,
             felis nec ultrices luctus, urna lorem tincidunt lectus, nec varius
             ligula sapien a justo.
-          </p>
+          </TextAnimate>
           <div className="flex gap-4 mt-4">
             <Button variant="outline">Learn More</Button>
             <Button>Hire Me</Button>
@@ -26,20 +29,20 @@ export default function Hero() {
 
       {/* RIGHT ICONS - DESKTOP */}
       <div className="hidden md:flex flex-col items-center justify-start pt-10 gap-4 w-[10%] z-100">
-        <Button variant="ghost" size="icon" className="rounded-full hover:text-red-500">
+        <Button variant="ghost" size="icon" className="rounded-full text-red-500 hover:text-white">
           <Mail className="h-5 w-5" />
         </Button>
-        <Button variant="ghost" size="icon" className="rounded-full hover:text-gray-400 hover:dark:text-gray-700">
+        <Button variant="ghost" size="icon" className="rounded-full text-gray-700 hover:text-white">
           <Github className="h-5 w-5" />
         </Button>
-        <Button variant="ghost" size="icon" className="rounded-full hover:text-blue-500">
+        <Button variant="ghost" size="icon" className="rounded-full text-blue-500 hover:text-white">
           <Linkedin className="h-5 w-5" />
         </Button>
        <AnimatedThemeToggler/>
       </div>
 
       {/* GREEN BAR (desktop vertical) */}
-      <div className="hidden md:block absolute top-0 left-6/8 -translate-x-1/2 w-[30%] h-full bg-[#97c07c] z-0"></div>
+      <div className="hidden md:block absolute top-0 left-6/8 -translate-x-1/2 w-[30%] h-full bg-[#4f735c] z-0"></div>
 
       {/* PORTRAIT (desktop) */}
       <img
@@ -49,9 +52,9 @@ export default function Hero() {
       />
 
       {/* MOBILE VIEW */}
-      <div className="flex md:hidden flex-col items-center justify-start relative w-full h-full p-6">
+      <div className="flex md:hidden flex-col items-center justify-start relative w-full h-full p-6 overflow-clip">
         {/* Top Right Icons */}
-        <div className="absolute top-4 right-4 flex gap-3">
+        <div className="absolute top-4 right-4 flex gap-3 z-100">
           <Button variant="ghost" size="icon" className="rounded-full text-red-500">
             <Mail className="h-5 w-5" />
           </Button>
@@ -66,11 +69,12 @@ export default function Hero() {
 
         {/* Name and Description */}
         <div className="flex flex-col items-center text-center mt-20 gap-4 z-20">
-          <h1 className="text-4xl font-bold">Stephen Paul</h1>
-          <p className="text-base text-gray-300 max-w-md">
+          <h1 className="text-2xl font-bold rock-salt-regular">I am</h1>
+          <h1 className="text-4xl font-bold rock-salt-regular"><Highlighter action="highlight" color="#92bc7c">Stephen Paul</Highlighter></h1>
+          <TextAnimate className="text-lg max-w-2xl text-left" animation="blurIn" by="word" once>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-            sit amet justo nec sapien tincidunt aliquet.
-          </p>
+            sit amet justo nec sapien tincidunt aliquet. Curabitur fringilla,
+          </TextAnimate>
           <div className="flex gap-4 mt-4">
             <Button variant="outline">Learn More</Button>
             <Button>Hire Me</Button>
@@ -78,7 +82,7 @@ export default function Hero() {
         </div>
 
         {/* Green Bar and Portrait */}
-        <div className="absolute bottom-0 w-full h-[40%] bg-[#97c07c] z-0"></div>
+        <div className="absolute bottom-0 w-[120%] h-[40%] rotate-10 translate-y-10 bg-[#4f735c] -z-10"></div>
         <img
           src={portrait}
           alt="Stephen Paul"

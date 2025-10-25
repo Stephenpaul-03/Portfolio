@@ -4,6 +4,7 @@ import React, { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { useOutsideClick } from "@/hooks/use-outside-click";
 import { achievements } from "@/data";
+import { ScrollArea } from "@/components/ui/scroll-area"; // 👈 Import from shadcn
 
 export default function Achievements() {
   return (
@@ -19,18 +20,15 @@ export default function Achievements() {
       </div>
 
       {/* Flexible Section */}
-      <div className="flex-1 w-[80%] max-h-[50vh] md:max-h-[60vh] rounded-xl overflow-scroll">
-        <Achievement_List/>
-      </div>
+      <ScrollArea className="flex-1 w-[100%] md:w-[80%] max-h-[50vh] md:max-h-[65vh] rounded-xl">
+        <Achievement_List />
+      </ScrollArea>
     </main>
   );
 }
 
-
-export  function Achievement_List() {
-  const [active, setActive] = useState<(typeof achievements)[number] | boolean | null>(
-    null
-  );
+export function Achievement_List() {
+  const [active, setActive] = useState<(typeof achievements)[number] | boolean | null>(null);
   const ref = useRef<HTMLDivElement>(null);
   const id = useId();
 
@@ -51,9 +49,7 @@ export  function Achievement_List() {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [active]);
 
-  useOutsideClick(ref as React.RefObject<HTMLDivElement>, () =>
-    setActive(null)
-  );
+  useOutsideClick(ref as React.RefObject<HTMLDivElement>, () => setActive(null));
 
   return (
     <>
@@ -131,11 +127,15 @@ export  function Achievement_List() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="text-neutral-600 text-xs md:text-sm lg:text-base max-h-[60vh] md:max-h-[40vh] overflow-auto flex flex-col gap-4 dark:text-neutral-400 [scrollbar-width:none] [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch]"
                   >
-                    {typeof active.content === "function"
-                      ? active.content()
-                      : active.content}
+                    {/* ScrollArea inside modal for content */}
+                    <ScrollArea className="text-neutral-600 text-xs md:text-sm lg:text-base max-h-[60vh] md:max-h-[40vh] dark:text-neutral-400">
+                      <div className="flex flex-col gap-4">
+                        {typeof active.content === "function"
+                          ? active.content()
+                          : active.content}
+                      </div>
+                    </ScrollArea>
                   </motion.div>
                 </div>
               </div>
@@ -144,50 +144,53 @@ export  function Achievement_List() {
         ) : null}
       </AnimatePresence>
 
-      <ul className="max-w-xl mx-auto w-full gap-4 overflow-scroll">
-        {achievements.map((Achievement) => (
-          <motion.div
-            layoutId={`card-${Achievement.title}-${id}`}
-            key={`card-${Achievement.title}-${id}`}
-            onClick={() => setActive(Achievement)}
-            className="p-4 flex flex-row justify-between items-center hover:bg-neutral-50 dark:hover:bg-neutral-800 rounded-xl cursor-pointer gap-4"
-          >
-            <div className="flex gap-4 items-center w-full">
-              <motion.div layoutId={`image-${Achievement.title}-${id}`}>
-                <img
-                  width={100}
-                  height={100}
-                  src={Achievement.src}
-                  alt={Achievement.title}
-                  className="h-20 w-20 sm:h-24 sm:w-24 md:h-14 md:w-14 rounded-lg object-cover object-center flex-shrink-0"
-                />
-              </motion.div>
-
-              <div className="flex-1">
-                <motion.h3
-                  layoutId={`title-${Achievement.title}-${id}`}
-                  className="font-medium text-neutral-800 dark:text-neutral-200 text-left text-sm sm:text-base"
-                >
-                  {Achievement.title}
-                </motion.h3>
-                <motion.p
-                  layoutId={`description-${Achievement.description}-${id}`}
-                  className="text-neutral-600 dark:text-neutral-400 text-left text-xs sm:text-sm"
-                >
-                  {Achievement.description}
-                </motion.p>
-              </div>
-            </div>
-
-            <motion.button
-              layoutId={`button-${Achievement.title}-${id}`}
-              className="px-3 py-2 sm:px-4 sm:py-2 text-xs sm:text-sm rounded-full font-bold bg-gray-100 hover:bg-green-500 hover:text-white text-black whitespace-nowrap"
+      {/* Achievements list */}
+      <ScrollArea className="max-w-lg md:max-w-xl mx-auto w-full h-full">
+        <ul className="w-full gap-4">
+          {achievements.map((Achievement) => (
+            <motion.div
+              layoutId={`card-${Achievement.title}-${id}`}
+              key={`card-${Achievement.title}-${id}`}
+              onClick={() => setActive(Achievement)}
+              className="p-4 flex flex-row justify-between items-center hover:bg-neutral-50 dark:hover:bg-neutral-800 rounded-xl cursor-pointer gap-4"
             >
-              {Achievement.ctaText}
-            </motion.button>
-          </motion.div>
-        ))}
-      </ul>
+              <div className="flex gap-4 items-center w-full">
+                <motion.div layoutId={`image-${Achievement.title}-${id}`}>
+                  <img
+                    width={100}
+                    height={100}
+                    src={Achievement.src}
+                    alt={Achievement.title}
+                    className="h-20 w-20 sm:h-24 sm:w-24 md:h-14 md:w-14 rounded-lg object-cover object-center flex-shrink-0"
+                  />
+                </motion.div>
+
+                <div className="flex-1">
+                  <motion.h3
+                    layoutId={`title-${Achievement.title}-${id}`}
+                    className="font-medium text-neutral-800 dark:text-neutral-200 text-left text-sm sm:text-base"
+                  >
+                    {Achievement.title}
+                  </motion.h3>
+                  <motion.p
+                    layoutId={`description-${Achievement.description}-${id}`}
+                    className="text-neutral-600 dark:text-neutral-400 text-left text-xs sm:text-sm"
+                  >
+                    {Achievement.description}
+                  </motion.p>
+                </div>
+              </div>
+
+              <motion.button
+                layoutId={`button-${Achievement.title}-${id}`}
+                className="px-3 py-2 sm:px-4 sm:py-2 text-xs sm:text-sm rounded-full font-bold bg-gray-100 hover:bg-green-500 hover:text-white text-black whitespace-nowrap"
+              >
+                {Achievement.ctaText}
+              </motion.button>
+            </motion.div>
+          ))}
+        </ul>
+      </ScrollArea>
     </>
   );
 }

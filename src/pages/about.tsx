@@ -6,19 +6,11 @@ import Hobbies from "@/components/hobbies";
 import Academics from "@/components/academics";
 
 const panels = [
-  { title: "Lore Lite", content: <About />, color: "bg-purple-500" },
-  {
-    title: "Stuff I know (somehow)",
-    content: <Skills />,
-    color: "bg-indigo-500",
-  },
-  {
-    title: "Where I Got Smarter (kinda)",
-    content: <Academics />,
-    color: "bg-fuchsia-500",
-  },
-  { title: "Milestones", content: <Achievements />, color: "bg-blue-500" },
-  { title: "Side Quests", content: <Hobbies />, color: "bg-cyan-500" },
+  { title: "About Me", content: <About />, color: "bg-primary" },
+  { title: "My Skills", content: <Skills />, color: "bg-primary" },
+  { title: "Academic Background", content: <Academics />, color: "bg-primary" },
+  { title: "My Achievements", content: <Achievements />, color: "bg-primary" },
+  { title: "My Hobbies", content: <Hobbies />, color: "bg-primary" },
 ];
 
 export default function App() {
@@ -34,12 +26,10 @@ export default function App() {
 
   const togglePanel = (index: number) => {
     if (index === activeIndex) {
-      // If same panel is clicked, open the next one cyclically
       const nextIndex = (index + 1) % panels.length;
       setFadeIn(false);
       setActiveIndex(nextIndex);
     } else {
-      // Normal behavior: open clicked panel
       setFadeIn(false);
       setActiveIndex(index);
     }
@@ -137,29 +127,48 @@ export default function App() {
               ${isActive ? "md:flex-1 flex-1" : "md:w-24 flex-none"}
             `}
           >
+            {/* Panel Bar */}
             <div
               onClick={() => togglePanel(index)}
               className={`
-                ${panel.color} text-white font-bold cursor-pointer
-                flex items-center justify-center
-                shadow-lg hover:shadow-xl
-                transition-all duration-500 ease-in-out flex-shrink-0
-                ${
-                  isActive ? "md:w-80 md:h-full h-20" : "md:w-24 md:h-full h-16"
-                }
+                relative cursor-pointer flex items-center justify-center 
+                shadow-lg hover:shadow-xl flex-shrink-0
+                transition-all duration-700 ease-in-out overflow-hidden
+                ${isActive ? "md:w-80 md:h-full h-20" : "md:w-24 md:h-full h-16"}
               `}
+              style={{
+                backgroundImage: isActive
+                  ? `url('https://placehold.co/600x400')`
+                  : "none",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
             >
+              {/* Overlay for text contrast */}
+              <div
+                className={`absolute inset-0 ${
+                  isActive ? "bg-black/40" : "bg-primary"
+                } transition-all duration-500`}
+              />
+
+              {/* Text */}
               <span
                 className={`
-                  ${isActive ? "text-2xl" : "text-lg md:rotate-90"}
-                  whitespace-nowrap px-4
+                  relative text-white font-bold rock-salt-regular whitespace-nowrap px-4
                   transition-all duration-500 ease-in-out
+                  ${
+                    isActive
+                      ? "text-xl md:absolute md:bottom-4 md:left-1/2 md:-translate-x-1/2 absolute bottom-2 right-3"
+                      : "text-lg md:rotate-90"
+                  }
                 `}
               >
                 {panel.title}
               </span>
             </div>
 
+            {/* Expanding Content */}
             <div
               style={{
                 height: targetHeight,
