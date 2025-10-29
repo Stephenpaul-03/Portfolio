@@ -30,7 +30,7 @@ export const Projects: React.FC = () => {
 
   return (
     <div className="min-h-screen w-full flex flex-col items-center pt-16 overflow-y-auto">
-      <h1 className="text-4xl font-bold mb-5 text-center rock-salt-regular leading-relaxed text-primary">Projects Showcase</h1>
+      <h1 className="text-2xl md:text-4xl font-bold mb-5 text-center rock-salt-regular leading-relaxed text-primary dark:text-white">Projects Showcase</h1>
       <p className="px-10 md:px-20 mb-10 text-sm md:text-md text-center text-muted-foreground">
         A gallery of dummy projects for UI testing and design layout purposes.
       </p>
@@ -69,7 +69,7 @@ export const Projects: React.FC = () => {
               {/* Info */}
               <div className="p-6 md:w-1/2 flex flex-col justify-between overflow-y-auto md:h-full h-[55%]">
                 <div>
-                  <h3 className="text-2xl font-bold mb-2">{active.title}</h3>
+                  <h3 className="text-2xl font-bold mb-2 rock-salt-regular text-primary">{active.title}</h3>
                   <p className="text-muted-foreground mb-4">{active.description}</p>
                   <div className="flex flex-wrap gap-2 mb-4">
                     {active.tech.map((stack) => (
@@ -139,10 +139,10 @@ export const Projects: React.FC = () => {
               className="absolute inset-0 w-full h-full object-cover"
             />
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background/80 via-background/40 to-transparent p-4 backdrop-blur-sm">
-              <h3 className="text-sm md:text-lg font-semibold text-foreground">
+              <h3 className="text-sm md:text-lg font-semibold text-primary rock-salt-regular mb-2 text-center">
                 {project.title}
               </h3>
-              <p className="text-xs md:text-sm text-muted-foreground">
+              <p className="text-xs md:text-sm text-muted-foreground text-center">
                 {project.description}
               </p>
             </div>

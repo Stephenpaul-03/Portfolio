@@ -81,8 +81,8 @@ export const Animated_Carousel = ({
   };
 
   return (
-    <div className="mx-auto max-w-sm px-4 py-10 font-sans antialiased md:max-w-4xl md:px-8 lg:px-12">
-      <div className="relative grid grid-cols-1 gap-10 md:grid-cols-2">
+    <div className="mx-auto max-w-sm px-4 py-10 font-sans antialiased md:max-w-5xl md:px-4 lg:px-2">
+      <div className="relative grid grid-cols-1 gap-20 md:grid-cols-2">
         <div>
           <div
             className="relative h-80 w-full select-none"

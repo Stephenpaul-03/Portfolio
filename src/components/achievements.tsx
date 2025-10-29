@@ -4,12 +4,11 @@ import React, { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { useOutsideClick } from "@/hooks/use-outside-click";
 import { achievements } from "@/data";
-import { ScrollArea } from "@/components/ui/scroll-area"; // 👈 Import from shadcn
+import { ScrollArea } from "@/components/ui/scroll-area"; 
 
 export default function Achievements() {
   return (
     <main className="flex h-[70vh] md:min-h-screen w-full flex-col items-center justify-start p-5">
-      {/* Description Section */}
       <div className="text-center space-y-4 my-2">
         <p>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium
@@ -19,7 +18,6 @@ export default function Achievements() {
         </p>
       </div>
 
-      {/* Flexible Section */}
       <ScrollArea className="flex-1 w-[100%] md:w-[80%] max-h-[50vh] md:max-h-[65vh] rounded-xl">
         <Achievement_List />
       </ScrollArea>

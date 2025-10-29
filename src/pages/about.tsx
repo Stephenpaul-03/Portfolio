@@ -5,12 +5,38 @@ import Achievements from "@/components/achievements";
 import Hobbies from "@/components/hobbies";
 import Academics from "@/components/academics";
 
+import img1 from "@/assets/Panels/img1.jpeg";
+import img2 from "@/assets/Panels/img2.jpeg";
+import img3 from "@/assets/Panels/img3.jpeg";
+import img4 from "@/assets/Panels/img4.jpeg";
+import img5 from "@/assets/Panels/img5.jpeg";
+
 const panels = [
-  { title: "About Me", content: <About />, color: "bg-primary" },
-  { title: "My Skills", content: <Skills />, color: "bg-primary" },
-  { title: "Academic Background", content: <Academics />, color: "bg-primary" },
-  { title: "My Achievements", content: <Achievements />, color: "bg-primary" },
-  { title: "My Hobbies", content: <Hobbies />, color: "bg-primary" },
+  { title: "Who I Am", content: <About />, color: "bg-primary", panel: img1 },
+  {
+    title: "What I Do Best",
+    content: <Skills />,
+    color: "bg-primary",
+    panel: img2,
+  },
+  {
+    title: "My Journey So Far",
+    content: <Academics />,
+    color: "bg-primary",
+    panel: img3,
+  },
+  {
+    title: "Milestones & Highlights",
+    content: <Achievements />,
+    color: "bg-primary",
+    panel: img4,
+  },
+  {
+    title: "Life Outside the Grind",
+    content: <Hobbies />,
+    color: "bg-primary",
+    panel: img5,
+  },
 ];
 
 export default function App() {
@@ -21,8 +47,8 @@ export default function App() {
   const contentRefs = useRef<Array<HTMLDivElement | null>>([]);
   const roRefs = useRef<Array<ResizeObserver | null>>([]);
 
-  const EXPAND_DURATION = 500; // ms for height animation
-  const FADE_DURATION = 1000; // ms for opacity fade
+  const EXPAND_DURATION = 500; // ms
+  const FADE_DURATION = 1000; // ms
 
   const togglePanel = (index: number) => {
     if (index === activeIndex) {
@@ -131,41 +157,53 @@ export default function App() {
             <div
               onClick={() => togglePanel(index)}
               className={`
-                relative cursor-pointer flex items-center justify-center 
-                shadow-lg hover:shadow-xl flex-shrink-0
+                relative cursor-pointer flex-shrink-0 shadow-lg hover:shadow-xl
                 transition-all duration-700 ease-in-out overflow-hidden
-                ${isActive ? "md:w-80 md:h-full h-20" : "md:w-24 md:h-full h-16"}
+                ${
+                  isActive ? "md:w-80 md:h-full h-20" : "md:w-24 md:h-full h-16"
+                }
               `}
-              style={{
-                backgroundImage: isActive
-                  ? `url('https://placehold.co/600x400')`
-                  : "none",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-              }}
             >
-              {/* Overlay for text contrast */}
+              {/* Background Image Fade */}
+              <div
+                className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                  isActive ? "opacity-100" : "opacity-0"
+                }`}
+                style={{
+                  backgroundImage: `url(${panel.panel})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
+                }}
+              />
+
+              {/* Overlay */}
               <div
                 className={`absolute inset-0 ${
                   isActive ? "bg-black/40" : "bg-primary"
-                } transition-all duration-500`}
+                } transition-all duration-700 ease-in-out`}
               />
 
-              {/* Text */}
-              <span
-                className={`
-                  relative text-white font-bold rock-salt-regular whitespace-nowrap px-4
-                  transition-all duration-500 ease-in-out
-                  ${
-                    isActive
-                      ? "text-xl md:absolute md:bottom-4 md:left-1/2 md:-translate-x-1/2 absolute bottom-2 right-3"
-                      : "text-lg md:rotate-90"
-                  }
-                `}
-              >
-                {panel.title}
-              </span>
+              {/* Title */}
+              <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
+                <span
+                  className={`
+                    absolute text-white font-bold rock-salt-regular px-3 py-1 rounded
+                    transition-all duration-700 ease-in-out
+                    ${
+                      isActive
+                        ? "text-sm md:text-base bottom-2 right-3 md:bottom-4 md:right-4 rotate-0"
+                        : "text-lg md:text-xl md:rotate-90 md:whitespace-nowrap"
+                    }
+                  `}
+                  style={{
+                    transformOrigin: isActive ? "bottom right" : "center",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {panel.title}
+                </span>
+              </div>
             </div>
 
             {/* Expanding Content */}

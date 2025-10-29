@@ -1,28 +1,50 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Mail, Github, Linkedin } from "lucide-react";
 import portrait from "@/assets/img.png";
 import { AnimatedThemeToggler } from "@/components/theme/animated-theme-toggler";
-import { Highlighter } from "@/components/ui/highlighter";
-import { TextAnimate } from "@/components/ui/text-animate";
 
 export default function Hero() {
+  const desktopDescriptions = [
+    "I design and develop digital experiences that feel smooth, look clean, and occasionally make users wonder how I pulled it off",
+    "I am still figuring out if I’m a developer, designer, or digital chaos coordinator; but hey, at least the projects keep getting cooler",
+    "Somewhere between coding, designing, and overthinking; building things that sometimes crash but always teach me something new",
+    "Part-time developer, part-time designer, full-time creative mess trying to make cool stuff on the web and beyond.",
+    "I tinker, build, sketch, and code; learning how to turn ideas into things that actually work (most of the time)",
+    "I’m not just coding websites; I’m figuring out how to make things that matter, even if it means trying everything once."
+  ];
+
+  const mobileDescriptions = [
+    "I Build websites that slap. metaphorically, not literally",
+    "I break things until they work. That’s called development, right?",
+    "Im always one line of code away from brilliance… or disaster.",
+    "Jack of many trades, master of fun ones.",
+    "I build, break, and rebuild things until they make sense.",
+    "A work in progress, but so are all great projects.",
+    "Making ideas happen, one messy project at a time.",
+    "Trying everything once. except giving up."
+  ];
+
+  const [desktopText] = useState(() => 
+    desktopDescriptions[Math.floor(Math.random() * desktopDescriptions.length)]
+  );
+  const [mobileText] = useState(() => 
+    mobileDescriptions[Math.floor(Math.random() * mobileDescriptions.length)]
+  );
+
   return (
     <div className="relative flex flex-col md:flex-row h-screen w-full">
-      {/* TOP NAV (for desktop) */}
       <div className="hidden md:flex flex-col p-10 w-[90%] z-10">
         {/* Hero Text */}
         <div className="flex flex-col gap-6 items-baseline justify-center flex-1">
-          <h1 className="text-4xl font-bold rock-salt-regular">I am</h1>
-          <h1 className="text-6xl font-bold rock-salt-regular"><Highlighter action="highlight" color="#92bc7c">Stephen Paul</Highlighter></h1>
-          <TextAnimate className="text-lg max-w-2xl text-left" animation="blurIn" by="word" once>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-            sit amet justo nec sapien tincidunt aliquet. Curabitur fringilla,
-            felis nec ultrices luctus, urna lorem tincidunt lectus, nec varius
-            ligula sapien a justo.
-          </TextAnimate>
+          <h1 className="text-4xl font-bold rock-salt-regular">Hey! I am</h1>
+          <h1 className="text-6xl font-bold rock-salt-regular text-primary dark:text-white">
+            Stephen Paul
+          </h1>
+          <p className=" mt-5 text-2xl max-w-2xl text-left ">{desktopText}</p>
           <div className="flex gap-4 mt-4">
             <Button variant="outline">Learn More</Button>
-            <Button>Hire Me</Button>
+            <Button>Contact Me</Button>
           </div>
         </div>
       </div>
@@ -38,7 +60,7 @@ export default function Hero() {
         <Button variant="ghost" size="icon" className="rounded-full text-blue-500 hover:text-white">
           <Linkedin className="h-5 w-5" />
         </Button>
-       <AnimatedThemeToggler/>
+        <AnimatedThemeToggler />
       </div>
 
       {/* GREEN BAR (desktop vertical) */}
@@ -64,20 +86,17 @@ export default function Hero() {
           <Button variant="ghost" size="icon" className="text-blue-500">
             <Linkedin className="h-5 w-5" />
           </Button>
-          <AnimatedThemeToggler/>
+          <AnimatedThemeToggler />
         </div>
 
         {/* Name and Description */}
         <div className="flex flex-col items-center text-center mt-20 gap-4 z-20">
-          <h1 className="text-2xl font-bold rock-salt-regular">I am</h1>
-          <h1 className="text-4xl font-bold rock-salt-regular"><Highlighter action="highlight" color="#92bc7c">Stephen Paul</Highlighter></h1>
-          <TextAnimate className="text-lg max-w-2xl text-left" animation="blurIn" by="word" once>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-            sit amet justo nec sapien tincidunt aliquet. Curabitur fringilla,
-          </TextAnimate>
+          <h1 className="text-2xl font-bold rock-salt-regular"> Hey!  I am</h1>
+          <h1 className="text-4xl font-bold rock-salt-regular">Stephen Paul</h1>
+          <p className=" mt-5 text-2xl max-w-2xl text-center  caveat-brush-regular">{mobileText}</p>
           <div className="flex gap-4 mt-4">
             <Button variant="outline">Learn More</Button>
-            <Button>Hire Me</Button>
+            <Button>Contact Me</Button>
           </div>
         </div>
 

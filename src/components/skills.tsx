@@ -23,9 +23,9 @@ const renderTree = (node: any) => {
 export default function Skills() {
   return (
     <section className="flex flex-col h-[115vh] min-h-[80vh] md:min-h-screen w-full items-center justify-start p-5">
-      <div className="max-w-6xl w-full h-[130vh] md:h-[75vh] flex flex-col items-center gap-12">
+      <div className="max-w-6xl w-full h-[130vh] md:h-[75vh] flex flex-col items-center gap-12 md:gap-8">
         {/* Description */}
-        <p className="text-center max-w-2xl text-sm">
+        <p className="text-center max-w-2xl text-sm md:text-lg">
           Here's a showcase of the technologies, tools, and skills I work with
           daily - from frontend and backend development to the tools that keep
           everything flowing smoothly.
@@ -47,11 +47,7 @@ export default function Skills() {
                   "1",
                   "2",
                   "3",
-                  "8",
-                  "13",
-                  "14",
-                  "18",
-                  "22",
+                  "8"
                 ]}
               >
                 {renderTree(developmentTreeData)}
@@ -64,7 +60,7 @@ export default function Skills() {
             <div className="bg-background relative flex h-[350px] w-4/5 flex-col items-center justify-center overflow-hidden rounded-lg border">
               <Tree
                 className="bg-background overflow-hidden rounded-md p-3"
-                initialExpandedItems={["30", "31", "35", "41", "46"]}
+                initialExpandedItems={["30", "31",]}
               >
                 {renderTree(toolsTreeData)}
               </Tree>

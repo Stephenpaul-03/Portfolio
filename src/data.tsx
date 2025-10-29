@@ -1,154 +1,165 @@
+// ========================== ICON IMPORTS ==========================
 import {
-  Circle,
-  Square,
-  Triangle,
-  Star,
-  Hexagon,
-  Play,
-  Music,
-  Gamepad,
-  Camera,
+  Code2,
+  Database,
+  Terminal,
+  Cog,
+  Wrench,
+  Cloud,
+  Palette,
   Monitor,
-  Mail,
-  Heart,
+  Globe,
 } from "lucide-react";
+
+import {
+  SiPython,
+  SiJavascript,
+  SiTypescript,
+  SiC,
+  SiHtml5,
+  SiCss3,
+  SiReact,
+  SiNodedotjs,
+  SiTailwindcss,
+  SiShadcnui,
+  SiGit,
+  SiGithub,
+  SiFigma,
+  SiAdobexd,
+  SiLinux,
+  SiPostgresql,
+  SiMongodb,
+  SiAmazon,
+} from "react-icons/si";
+
+import { FaJava } from "react-icons/fa";
 
 // =================================== About Me Page ================================
 
 // ===== Skills Panel ===== //
-
 export const logos = [
-  { name: "Circle", id: 1, img: Circle },
-  { name: "Square", id: 2, img: Square },
-  { name: "Triangle", id: 3, img: Triangle },
-  { name: "Star", id: 4, img: Star },
-  { name: "Hexagon", id: 5, img: Hexagon },
-  { name: "Play", id: 6, img: Play },
-  { name: "Music", id: 7, img: Music },
-  { name: "Gamepad", id: 8, img: Gamepad },
-  { name: "Camera", id: 9, img: Camera },
-  { name: "Monitor", id: 10, img: Monitor },
-  { name: "Mail", id: 11, img: Mail },
-  { name: "Heart", id: 12, img: Heart },
+  { name: "Python", id: 1, img: SiPython },
+  { name: "Java", id: 2, img: FaJava },
+  { name: "JavaScript", id: 3, img: SiJavascript },
+  { name: "TypeScript", id: 4, img: SiTypescript },
+  { name: "C", id: 5, img: SiC },
+  { name: "HTML", id: 6, img: SiHtml5 },
+  { name: "CSS", id: 7, img: SiCss3 },
+  { name: "React", id: 8, img: SiReact },
+  { name: "Node", id: 9, img: SiNodedotjs },
+  { name: "Tailwind CSS", id: 10, img: SiTailwindcss },
+  { name: "Shadcn", id: 11, img: SiShadcnui },
+  { name: "PostgreSQL", id: 12, img: SiPostgresql },
+  { name: "MongoDB", id: 13, img: SiMongodb },
+  { name: "AWS", id: 14, img: SiAmazon },
+  { name: "Git", id: 15, img: SiGit },
+  { name: "GitHub", id: 16, img: SiGithub },
+  { name: "Figma", id: 17, img: SiFigma },
+  { name: "Adobe XD", id: 18, img: SiAdobexd },
+  { name: "Linux", id: 19, img: SiLinux },
 ];
 
 // ===== Development Tree ===== //
-
 export const developmentTreeData = {
   element: "Development",
   value: "1",
+  icon: Code2,
   children: [
     {
       element: "Front End",
       value: "2",
+      icon: Globe,
       children: [
         {
           element: "Programming Languages",
           value: "3",
+          icon: Terminal,
           children: [
-            { value: "4", name: "HTML" },
-            { value: "5", name: "CSS" },
-            { value: "6", name: "JavaScript" },
-            { value: "7", name: "TypeScript" },
+            { value: "4", name: "HTML", icon: SiHtml5 },
+            { value: "5", name: "CSS", icon: SiCss3 },
+            { value: "6", name: "JavaScript", icon: SiJavascript },
+            { value: "7", name: "TypeScript", icon: SiTypescript },
           ],
         },
         {
           element: "Libraries & Frameworks",
           value: "8",
+          icon: Wrench,
           children: [
-            { value: "9", name: "React" },
-            { value: "10", name: "Next.js" },
-            { value: "11", name: "Tailwind CSS" },
-            { value: "12", name: "Redux" },
+            { value: "9", name: "React", icon: SiReact },
+            { value: "10", name: "Tailwind CSS", icon: SiTailwindcss },
+            { value: "11", name: "Shadcn", icon: SiShadcnui },
           ],
         },
       ],
     },
     {
       element: "Back End",
-      value: "13",
+      value: "12",
+      icon: Terminal,
       children: [
         {
           element: "Programming Languages",
-          value: "14",
+          value: "13",
+          icon: Terminal,
           children: [
-            { value: "15", name: "Node.js" },
-            { value: "16", name: "Python" },
-            { value: "17", name: "Java" },
-          ],
-        },
-        {
-          element: "Libraries & Frameworks",
-          value: "18",
-          children: [
-            { value: "19", name: "Express.js" },
-            { value: "20", name: "FastAPI" },
-            { value: "21", name: "Spring Boot" },
+            { value: "14", name: "Node.js", icon: SiNodedotjs },
+            { value: "15", name: "Python", icon: SiPython },
+            { value: "16", name: "Java", icon: FaJava },
+            { value: "17", name: "C", icon: SiC },
           ],
         },
       ],
     },
     {
-      element: "Database",
-      value: "22",
+      element: "Database & Infrastructure",
+      value: "18",
+      icon: Database,
       children: [
-        { value: "23", name: "PostgreSQL" },
-        { value: "24", name: "MongoDB" },
-        { value: "25", name: "MySQL" },
-        { value: "26", name: "Firebase" },
+        { value: "19", name: "PostgreSQL", icon: SiPostgresql },
+        { value: "20", name: "MongoDB", icon: SiMongodb },
+        { value: "21", name: "AWS", icon: SiAmazon },
       ],
     },
   ],
 };
 
 // ===== Tools Tree ===== //
-
 export const toolsTreeData = {
   element: "Tools",
   value: "30",
+  icon: Cog,
   children: [
     {
       element: "Design Tools",
       value: "31",
+      icon: Palette,
       children: [
-        { value: "32", name: "Figma" },
-        { value: "33", name: "Adobe XD" },
-        { value: "34", name: "Canva" },
+        { value: "32", name: "Figma", icon: SiFigma },
+        { value: "33", name: "Adobe XD", icon: SiAdobexd },
       ],
     },
     {
-      element: "DevOps",
-      value: "35",
+      element: "Dev Tools",
+      value: "34",
+      icon: Wrench,
       children: [
-        { value: "36", name: "Docker" },
-        { value: "37", name: "GitHub Actions" },
-        { value: "38", name: "Vercel" },
-        { value: "39", name: "Netlify" },
-        { value: "40", name: "AWS" },
+        { value: "35", name: "Git", icon: SiGit },
+        { value: "36", name: "GitHub", icon: SiGithub },
+        { value: "37", name: "Linux CLI", icon: SiLinux },
       ],
     },
     {
-      element: "IDE's",
-      value: "41",
+      element: "Deployment & Infra",
+      value: "38",
+      icon: Cloud,
       children: [
-        { value: "42", name: "VS Code" },
-        { value: "43", name: "IntelliJ IDEA" },
-        { value: "44", name: "PyCharm" },
-        { value: "45", name: "WebStorm" },
-      ],
-    },
-    {
-      element: "Utilities",
-      value: "46",
-      children: [
-        { value: "47", name: "Postman" },
-        { value: "48", name: "Git" },
-        { value: "49", name: "npm / pnpm" },
-        { value: "50", name: "ESLint / Prettier" },
+        { value: "39", name: "AWS", icon: SiAmazon },
       ],
     },
   ],
 };
+
 
 // ====== Academics Panel =======
 

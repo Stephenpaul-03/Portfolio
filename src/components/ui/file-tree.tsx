@@ -18,6 +18,9 @@ type TreeViewElement = {
   name: string
   isSelectable?: boolean
   children?: TreeViewElement[]
+  folderIcon?: React.ReactNode
+  folderOpenIcon?: React.ReactNode
+  fileIcon?: React.ReactNode
 }
 
 type TreeContextProps = {
@@ -30,6 +33,9 @@ type TreeContextProps = {
   openIcon?: React.ReactNode
   closeIcon?: React.ReactNode
   direction: "rtl" | "ltr"
+  defaultFolderIcon?: React.ReactNode
+  defaultFolderOpenIcon?: React.ReactNode
+  defaultFileIcon?: React.ReactNode
 }
 
 const TreeContext = createContext<TreeContextProps | null>(null)
@@ -51,6 +57,9 @@ type TreeViewProps = {
   initialExpandedItems?: string[]
   openIcon?: React.ReactNode
   closeIcon?: React.ReactNode
+  defaultFolderIcon?: React.ReactNode
+  defaultFolderOpenIcon?: React.ReactNode
+  defaultFileIcon?: React.ReactNode
 } & React.HTMLAttributes<HTMLDivElement>
 
 const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
@@ -64,6 +73,9 @@ const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
       indicator = true,
       openIcon,
       closeIcon,
+      defaultFolderIcon,
+      defaultFolderOpenIcon,
+      defaultFileIcon,
       dir,
       ...props
     },
@@ -146,6 +158,9 @@ const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
           openIcon,
           closeIcon,
           direction,
+          defaultFolderIcon,
+          defaultFolderOpenIcon,
+          defaultFileIcon,
         }}
       >
         <div className={cn("size-full", className)}>
@@ -187,7 +202,7 @@ const TreeIndicator = forwardRef<
       dir={direction}
       ref={ref}
       className={cn(
-        "bg-muted absolute left-1.5 h-full w-px rounded-md py-3 duration-300 ease-in-out hover:bg-slate-300 rtl:right-1.5",
+        "bg-muted absolute left-1.5 h-full w-[2px] rounded-md py-3 duration-300 ease-in-out hover:bg-slate-300 rtl:right-1.5",
         className
       )}
       {...props}
@@ -202,6 +217,8 @@ type FolderProps = {
   element: string
   isSelectable?: boolean
   isSelect?: boolean
+  folderIcon?: React.ReactNode
+  folderOpenIcon?: React.ReactNode
 } & React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
 
 const Folder = forwardRef<
@@ -215,6 +232,8 @@ const Folder = forwardRef<
       value,
       isSelectable = true,
       isSelect,
+      folderIcon,
+      folderOpenIcon,
       children,
       ...props
     },
@@ -228,7 +247,12 @@ const Folder = forwardRef<
       setExpandedItems,
       openIcon,
       closeIcon,
+      defaultFolderIcon,
+      defaultFolderOpenIcon,
     } = useTree()
+
+    const closedIcon = folderIcon ?? defaultFolderIcon ?? closeIcon ?? <FolderIcon className="size-4" />
+    const openedIcon = folderOpenIcon ?? defaultFolderOpenIcon ?? openIcon ?? <FolderOpenIcon className="size-4" />
 
     return (
       <AccordionPrimitive.Item
@@ -249,9 +273,7 @@ const Folder = forwardRef<
           disabled={!isSelectable}
           onClick={() => handleExpand(value)}
         >
-          {expandedItems?.includes(value)
-            ? (openIcon ?? <FolderOpenIcon className="size-4" />)
-            : (closeIcon ?? <FolderIcon className="size-4" />)}
+          {expandedItems?.includes(value) ? openedIcon : closedIcon}
           <span>{element}</span>
         </AccordionPrimitive.Trigger>
         <AccordionPrimitive.Content className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down relative h-full overflow-hidden text-sm">
@@ -299,8 +321,10 @@ const File = forwardRef<
     },
     ref
   ) => {
-    const { direction, selectedId, selectItem } = useTree()
+    const { direction, selectedId, selectItem, defaultFileIcon } = useTree()
     const isSelected = isSelect ?? selectedId === value
+    const icon = fileIcon ?? defaultFileIcon ?? <FileIcon className="size-4" />
+    
     return (
       <button
         ref={ref}
@@ -318,7 +342,7 @@ const File = forwardRef<
         onClick={() => selectItem(value)}
         {...props}
       >
-        {fileIcon ?? <FileIcon className="size-4" />}
+        {icon}
         {children}
       </button>
     )

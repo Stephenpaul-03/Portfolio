@@ -12,7 +12,7 @@ import { academics } from "@/data";
 
 export default function Academics() {
   return (
-    <main className="flex h-[85vh] overflow-auto md:min-h-screen w-full flex-col items-center justify-start p-5">
+    <main className="flex h-[95vh] md:min-h-screen w-full flex-col items-center justify-start p-5 ">
       {/* Description Section */}
       <div className="text-center space-y-4 mb-5 max-w-xl">
         <p>
@@ -29,8 +29,8 @@ export default function Academics() {
               <TimelineItem key={item.id} step={item.id}>
                 <TimelineHeader>
                   <TimelineSeparator />
-                  <TimelineDate>{item.date}</TimelineDate>
-                  <TimelineTitle>{item.title}</TimelineTitle>
+                  <TimelineDate className="">{item.date}</TimelineDate>
+                  <TimelineTitle className="text-md my-1 text-primary rock-salt-regular space-x-1">{item.title}</TimelineTitle>
                   <TimelineDate>{item.score}</TimelineDate>
                   <TimelineIndicator />
                 </TimelineHeader>
