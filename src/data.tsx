@@ -7,7 +7,6 @@ import {
   Wrench,
   Cloud,
   Palette,
-  Monitor,
   Globe,
 } from "lucide-react";
 
@@ -153,13 +152,10 @@ export const toolsTreeData = {
       element: "Deployment & Infra",
       value: "38",
       icon: Cloud,
-      children: [
-        { value: "39", name: "AWS", icon: SiAmazon },
-      ],
+      children: [{ value: "39", name: "AWS", icon: SiAmazon }],
     },
   ],
 };
-
 
 // ====== Academics Panel =======
 
@@ -199,74 +195,105 @@ export const academics = [
 
 // ====== Achievements Panel =======
 
+import a1 from "@/assets/Achievements/achivement1.jpeg"
+import a2 from "@/assets/Achievements/achivement2.jpeg"
+import a3 from "@/assets/Achievements/achivement3.jpeg"
+import a4 from "@/assets/Achievements/achivement4.jpeg"
+import a5 from "@/assets/Achievements/achivement5.jpeg"
+import a6 from "@/assets/Achievements/achivement6.jpeg"
+import a7 from "@/assets/Achievements/achivement7.jpeg"
+import a8 from "@/assets/Achievements/achivement8.jpeg"
+
+
+
 export const achievements = [
   {
     title: "Achievement One",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    src: "https://placehold.co/800x600?text=Achievement+1",
+    src: a1,
     ctaText: "Learn More",
     ctaLink: "#",
-    content: () => <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>,
+    content: () => (
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    ),
   },
   {
     title: "Achievement Two",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    src: "https://placehold.co/800x600?text=Achievement+2",
+    src: a2,
     ctaText: "Learn More",
     ctaLink: "#",
-    content: () => <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>,
+    content: () => (
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    ),
   },
   {
     title: "Achievement Three",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    src: "https://placehold.co/800x600?text=Achievement+3",
+    src: a3,
     ctaText: "Learn More",
     ctaLink: "#",
-    content: () => <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>,
+    content: () => (
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    ),
   },
   {
     title: "Achievement Four",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    src: "https://placehold.co/800x600?text=Achievement+4",
+    src: a4,
     ctaText: "Learn More",
     ctaLink: "#",
-    content: () => <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>,
+    content: () => (
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    ),
   },
   {
     title: "Achievement Five",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    src: "https://placehold.co/800x600?text=Achievement+5",
+    src: a5,
     ctaText: "Learn More",
     ctaLink: "#",
-    content: () => <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>,
+    content: () => (
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    ),
   },
   {
     title: "Achievement Six",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    src: "https://placehold.co/800x600?text=Achievement+6",
+    src:a6,
     ctaText: "Learn More",
     ctaLink: "#",
-    content: () => <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>,
+    content: () => (
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    ),
   },
   {
     title: "Achievement Seven",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    src: "https://placehold.co/800x600?text=Achievement+7",
+    src: a7,
     ctaText: "Learn More",
     ctaLink: "#",
-    content: () => <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>,
+    content: () => (
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    ),
   },
   {
     title: "Achievement Eight",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    src: "https://placehold.co/800x600?text=Achievement+8",
+    src: a8,
     ctaText: "Learn More",
     ctaLink: "#",
-    content: () => <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>,
+    content: () => (
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    ),
   },
 ];
 
 // ===== Hobbies Panel ======
+import cycling from "@/assets/Hobbies/Cycling.jpeg";
+import photography from "@/assets/Hobbies/Photography.jpeg";
+import gaming from "@/assets/Hobbies/Gaming.jpeg";
+import music from "@/assets/Hobbies/Music.jpeg";
 
 export const hobbies = [
   {
@@ -274,50 +301,55 @@ export const hobbies = [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat minima suscipit libero excepturi.",
     name: "Hobby One",
     designation: "Funny Tagline",
-    src: "https://placehold.co/400x400?text=Hobby+1",
+    src: cycling,
   },
   {
     quote:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, alias sed error voluptatem.",
     name: "Hobby Two",
     designation: "Funny Tagline",
-    src: "https://placehold.co/400x400?text=Hobby+2",
+    src: photography,
   },
   {
     quote:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem animi quibusdam minus mollitia.",
     name: "Hobby Three",
     designation: "Funny Tagline",
-    src: "https://placehold.co/400x400?text=Hobby+3",
+    src: gaming,
   },
   {
     quote:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente repellat odit qui eos.",
     name: "Hobby Four",
     designation: "Funny Tagline",
-    src: "https://placehold.co/400x400?text=Hobby+4",
-  },
-  {
-    quote:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque error illum suscipit ad.",
-    name: "Hobby Five",
-    designation: "Funny Tagline",
-    src: "https://placehold.co/400x400?text=Hobby+5",
+    src: music,
   },
 ];
 
 // ============================= Projects =======================================
+import pa1 from "@/assets/Projects/Projecta1.jpeg";
+import pa2 from "@/assets/Projects/Projecta2.jpeg";
+import pa3 from "@/assets/Projects/Projecta3.jpeg";
+import pa4 from "@/assets/Projects/Projecta4.jpeg";
+import pb1 from "@/assets/Projects/Projectb1.jpeg";
+import pb2 from "@/assets/Projects/Projectb2.jpeg";
+import pb3 from "@/assets/Projects/Projectb3.jpeg";
+import pb4 from "@/assets/Projects/Projectb4.jpeg";
+import pc1 from "@/assets/Projects/ProjectC1.jpeg";
+import pc2 from "@/assets/Projects/ProjectC2.jpeg";
+import pc3 from "@/assets/Projects/ProjectC3.jpeg";
+import pc4 from "@/assets/Projects/ProjectC4.jpeg";
+import pd1 from "@/assets/Projects/Projectd1.jpeg";
+import pd2 from "@/assets/Projects/Projectd2.jpeg";
+import pd3 from "@/assets/Projects/Projectd3.jpeg";
+import pd4 from "@/assets/Projects/Projectd4.jpeg";
 
 export const projects = [
   {
     title: "Project One",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, nemo.",
-    images: [
-      "https://placehold.co/800x1000?text=Project+1+Image+1",
-      "https://placehold.co/800x1000?text=Project+1+Image+2",
-      "https://placehold.co/800x1000?text=Project+1+Image+3",
-    ],
+    images: [pa1, pa2, pa3, pa4],
     ctaText: "Learn More",
     ctaLink: "#",
     tech: ["Placeholder Tech 1", "Placeholder Tech 2", "Placeholder Tech 3"],
@@ -329,11 +361,7 @@ export const projects = [
     title: "Project Two",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, velit.",
-    images: [
-      "https://placehold.co/800x1000?text=Project+2+Image+1",
-      "https://placehold.co/800x1000?text=Project+2+Image+2",
-      "https://placehold.co/800x1000?text=Project+2+Image+3",
-    ],
+    images: [pb1, pb2, pb3, pb4],
     ctaText: "Learn More",
     ctaLink: "#",
     tech: ["Placeholder Tech 1", "Placeholder Tech 2", "Placeholder Tech 3"],
@@ -345,11 +373,7 @@ export const projects = [
     title: "Project Three",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, corporis.",
-    images: [
-      "https://placehold.co/800x1000?text=Project+3+Image+1",
-      "https://placehold.co/800x1000?text=Project+3+Image+2",
-      "https://placehold.co/800x1000?text=Project+3+Image+3",
-    ],
+    images: [pc1, pc2, pc3, pc4],
     ctaText: "Learn More",
     ctaLink: "#",
     tech: ["Placeholder Tech 1", "Placeholder Tech 2", "Placeholder Tech 3"],
@@ -361,11 +385,7 @@ export const projects = [
     title: "Project Four",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, totam.",
-    images: [
-      "https://placehold.co/800x1000?text=Project+4+Image+1",
-      "https://placehold.co/800x1000?text=Project+4+Image+2",
-      "https://placehold.co/800x1000?text=Project+4+Image+3",
-    ],
+    images: [pd1, pd2, pd3, pd4],
     ctaText: "Learn More",
     ctaLink: "#",
     tech: ["Placeholder Tech 1", "Placeholder Tech 2", "Placeholder Tech 3"],

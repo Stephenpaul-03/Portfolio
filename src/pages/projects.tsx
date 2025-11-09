@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { projects } from "@/data";
+import { Highlighter } from "@/components/ui/highlighter";
 
 export const Projects: React.FC = () => {
   const [active, setActive] = useState<(typeof projects)[number] | null>(null);
@@ -30,9 +31,9 @@ export const Projects: React.FC = () => {
 
   return (
     <div className="min-h-screen w-full flex flex-col items-center pt-16 overflow-y-auto">
-      <h1 className="text-2xl md:text-4xl font-bold mb-5 text-center rock-salt-regular leading-relaxed text-primary dark:text-white">Projects Showcase</h1>
-      <p className="px-10 md:px-20 mb-10 text-sm md:text-md text-center text-muted-foreground">
-        A gallery of dummy projects for UI testing and design layout purposes.
+      <h1 className="text-2xl md:text-4xl font-bold mb-5 text-center rock-salt-regular leading-relaxed text-primary dark:text-white"><Highlighter isView action="highlight" padding={10} iterations={4} animationDuration={3000} color="#8cba75">Projects Showcase</Highlighter></h1>
+      <p className="px-10 md:px-20 mb-10 text-lg md:text-xl text-center text-muted-foreground">
+       When theory stopped theorizing and started executing. But hey, that’s just a theory.
       </p>
 
       <AnimatePresence>
@@ -55,7 +56,7 @@ export const Projects: React.FC = () => {
               initial={{ opacity: 0, scale: 0.9, y: 40 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 40 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
               ref={ref}
               className="w-[95vw] max-w-[1100px] h-[85vh] bg-background rounded-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row relative"
             >

@@ -2,20 +2,37 @@
 
 import LogoCarousel from "./ui/logo-carousel";
 import { Tree, Folder, File } from "@/components/ui/file-tree";
-import { logos, developmentTreeData,toolsTreeData } from "@/data";
+import { logos, developmentTreeData, toolsTreeData } from "@/data";
 
 // ===== Recursive Tree Renderer =====
 const renderTree = (node: any) => {
+  const IconComponent = node.icon ? node.icon : null;
+
   if (node.children) {
     return (
-      <Folder key={node.value} element={node.element} value={node.value}>
+      <Folder
+        key={node.value}
+        element={node.element}
+        value={node.value}
+        folderIcon={
+          IconComponent ? <IconComponent className="size-4" /> : undefined
+        }
+        folderOpenIcon={
+          IconComponent ? <IconComponent className="size-4" /> : undefined
+        }
+      >
         {node.children.map((child: any) => renderTree(child))}
       </Folder>
     );
   }
+
   return (
-    <File key={node.value} value={node.value}>
-      <p>{node.name}</p>
+    <File
+      key={node.value}
+      value={node.value}
+      fileIcon={node.icon ? <node.icon className="size-4" /> : undefined}
+    >
+      {node.name}
     </File>
   );
 };
@@ -43,12 +60,7 @@ export default function Skills() {
             <div className="bg-background relative flex h-[350px] w-4/5 flex-col items-center justify-center overflow-hidden rounded-lg border">
               <Tree
                 className="bg-background overflow-hidden rounded-md p-3"
-                initialExpandedItems={[
-                  "1",
-                  "2",
-                  "3",
-                  "8"
-                ]}
+                initialExpandedItems={["1", "2", "3", "8"]}
               >
                 {renderTree(developmentTreeData)}
               </Tree>
@@ -60,7 +72,7 @@ export default function Skills() {
             <div className="bg-background relative flex h-[350px] w-4/5 flex-col items-center justify-center overflow-hidden rounded-lg border">
               <Tree
                 className="bg-background overflow-hidden rounded-md p-3"
-                initialExpandedItems={["30", "31",]}
+                initialExpandedItems={["30", "31"]}
               >
                 {renderTree(toolsTreeData)}
               </Tree>
